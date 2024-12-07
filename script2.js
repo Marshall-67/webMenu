@@ -19,48 +19,46 @@ jscolor.presets.default = {
 jscolor.install();
 
 function updateConfig() {
-  const config = {
-    ESP: document.getElementById('ESP').checked,
-    skeletonESP: document.getElementById('skeletonESP').checked,
-    skeletonColor: {
-      r: parseInt(jscolor.presets.default.fromString(document.getElementById('skeletonColor').value).toRgbString().slice(1, 3), 16),
-      g: parseInt(jscolor.presets.default.fromString(document.getElementById('skeletonColor').value).toRgbString().slice(3, 5), 16),
-      b: parseInt(jscolor.presets.default.fromString(document.getElementById('skeletonColor').value).toRgbString().slice(5, 7), 16),
-      a: 255
-    },
-    showPlayerNames: document.getElementById('showPlayerNames').checked,
-    showPlayerTypes: document.getElementById('showPlayerTypes').checked,
-    showHeadCircle: document.getElementById('showHeadCircle').checked,
-    showCrosshair: document.getElementById('showCrosshair').checked,
-    crosshairSize: parseInt(document.getElementById('crosshairSize').value),
-    crosshairColor: {
-      r: parseInt(jscolor.presets.default.fromString(document.getElementById('crosshairColor').value).toRgbString().slice(1, 3), 16),
-      g: parseInt(jscolor.presets.default.fromString(document.getElementById('crosshairColor').value).toRgbString().slice(3, 5), 16),
-      b: parseInt(jscolor.presets.default.fromString(document.getElementById('crosshairColor').value).toRgbString().slice(5, 7), 16),
-      a: 255
-    },
-    bFPSLimiter: document.getElementById('bFPSLimiter').checked,
-    iFPSLimiterAmount: parseInt(document.getElementById('iFPSLimiterAmount').value),
-    exfilPoints: document.getElementById('exfilPoints').checked,
-    thermalVision: document.getElementById('thermalVision').checked
-  };
+    const config = {
+        ESP: document.getElementById('ESP').checked,
+        skeletonESP: document.getElementById('skeletonESP').checked,
+        skeletonColor: {
+            r: parseInt(document.getElementById('skeletonColor').value.slice(0, 2), 16),
+            g: parseInt(document.getElementById('skeletonColor').value.slice(2, 4), 16),
+            b: parseInt(document.getElementById('skeletonColor').value.slice(4, 6), 16),
+        },
+        showPlayerNames: document.getElementById('showPlayerNames').checked,
+        showPlayerTypes: document.getElementById('showPlayerTypes').checked,
+        showHeadCircle: document.getElementById('showHeadCircle').checked,
+        showCrosshair: document.getElementById('showCrosshair').checked,
+        crosshairSize: parseInt(document.getElementById('crosshairSize').value),
+        crosshairColor: {
+            r: parseInt(document.getElementById('crosshairColor').value.slice(0, 2), 16),
+            g: parseInt(document.getElementById('crosshairColor').value.slice(2, 4), 16),
+            b: parseInt(document.getElementById('crosshairColor').value.slice(4, 6), 16),
+        },
+        bFPSLimiter: document.getElementById('bFPSLimiter').checked,
+        iFPSLimiterAmount: parseInt(document.getElementById('iFPSLimiterAmount').value),
+        exfilPoints: document.getElementById('exfilPoints').checked,
+        thermalVision: document.getElementById('thermalVision').checked
+    };
 
-  fetch('/update-config', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify(config)
-  })
-  .then(response => {
-    if (response.ok) {
-      alert('Configuration updated successfully!');
-    } else {
-      alert('Failed to update configuration.');
-    }
-  })
-  .catch(error => {
-    console.error('Error:', error);
-    alert('An error occurred while updating configuration.');
-  });
+    fetch('/update-config', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(config)
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Configuration updated successfully!');
+        } else {
+            alert('Failed to update configuration.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('An error occurred while updating configuration.');
+    });
 }
