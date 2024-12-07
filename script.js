@@ -6,11 +6,11 @@ function toggleSection(sectionId) {
     section.style.display = "none";
   }
 }
+
 document.addEventListener('DOMContentLoaded', function() {
   document.getElementById('espSection').style.display = 'block';
   document.getElementById('miscSection').style.display = 'block';
 });
-
 
 // Initialize jscolor with hideValue option
 jscolor.presets.default = {
@@ -23,9 +23,9 @@ function updateConfig() {
     ESP: document.getElementById('ESP').checked,
     skeletonESP: document.getElementById('skeletonESP').checked,
     skeletonColor: {
-      r: parseInt(jscolor.presets.default.fromString(document.getElementById('skeletonColor').value).toRgbString().slice(1, 3), 16),
-      g: parseInt(jscolor.presets.default.fromString(document.getElementById('skeletonColor').value).toRgbString().slice(3, 5), 16),
-      b: parseInt(jscolor.presets.default.fromString(document.getElementById('skeletonColor').value).toRgbString().slice(5, 7), 16),
+      r: parseInt(document.getElementById('skeletonColor').jscolor.rgb[0]),
+      g: parseInt(document.getElementById('skeletonColor').jscolor.rgb[1]),
+      b: parseInt(document.getElementById('skeletonColor').jscolor.rgb[2]),
       a: 255
     },
     showPlayerNames: document.getElementById('showPlayerNames').checked,
@@ -34,9 +34,9 @@ function updateConfig() {
     showCrosshair: document.getElementById('showCrosshair').checked,
     crosshairSize: parseInt(document.getElementById('crosshairSize').value),
     crosshairColor: {
-      r: parseInt(jscolor.presets.default.fromString(document.getElementById('crosshairColor').value).toRgbString().slice(1, 3), 16),
-      g: parseInt(jscolor.presets.default.fromString(document.getElementById('crosshairColor').value).toRgbString().slice(3, 5), 16),
-      b: parseInt(jscolor.presets.default.fromString(document.getElementById('crosshairColor').value).toRgbString().slice(5, 7), 16),
+      r: parseInt(document.getElementById('crosshairColor').jscolor.rgb[0]),
+      g: parseInt(document.getElementById('crosshairColor').jscolor.rgb[1]),
+      b: parseInt(document.getElementById('crosshairColor').jscolor.rgb[2]),
       a: 255
     },
     bFPSLimiter: document.getElementById('bFPSLimiter').checked,
