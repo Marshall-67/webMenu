@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <title>Class-less preview • Pico CSS</title>
+    <meta name="description" content="A class-less example, without dependencies." />
+
+    <!-- Pico.css -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2.0.6/css/pico.classless.min.css"
+    />
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+    <!-- Include jscolor library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.4.5/jscolor.min.js"></script>
+    <style>
+      .color-picker {
+        position: relative;
+        margin-left: 20px;
+        top: 5px;
+        vertical-align: middle;
+      }
+      .feature-section {
+        position: relative;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <hgroup>
+        <h1>DMA Web Menu</h1>
+        <p>Tarkov webmenu for dma</p>
+      </hgroup>
+      <nav>
+        <ul>
+          <li><a href="#" onclick="toggleSection('espSection')">ESP</a></li>
+          <li><a href="#" onclick="toggleSection('miscSection')">Misc</a></li>
+        </ul>
+      </nav>
+    </header>
+    <!-- ./ Header -->
+
+    <!-- Main -->
+    <main>
+      <div class="container">
+        <!-- Control Panel -->
+        <section id="control-panel">
+          <h2>Control Panel</h2>
+          <form>
+            <!-- Toggle Buttons -->
+            <!-- Removed the toggle buttons here -->
+            <!-- ESP Features -->
+            <div id="espSection" class="feature-section">
+              <fieldset>
+                <legend>ESP Features</legend>
+                <label>
+                  <input type="checkbox" id="ESP" /> ESP
+                </label><br />
+                <label>
+                  <input type="checkbox" id="skeletonESP" checked /> Skeleton ESP
+                  <input class="jscolor color-picker" id="skeletonColor" value="00FFFF" data-jscolor="{hideValue:false}" style="width: 150px; height: 20px; border: none;" />
+                </label><br />
+                <label>
+                  <input type="checkbox" id="showPlayerNames" checked /> Show Player Names
+                </label><br />
+                <label>
+                  <input type="checkbox" id="showPlayerTypes" checked /> Show Player Types
+                </label><br />
+                <label>
+                  <input type="checkbox" id="showHeadCircle" checked /> Show Head Circle
+                </label><br />
+                <label>
+                  <input type="checkbox" id="showCrosshair" checked /> Show Crosshair
+                  <input class="jscolor color-picker" id="crosshairColor" value="FFFFFF" data-jscolor="{hideValue:false}" style="width: 150px; height: 20px; border: none;" />
+                </label><br />
+                <label for="crosshairSize">Crosshair Size:</label>
+                <input type="number" id="crosshairSize" value="10" min="1" /><br />
+              </fieldset>
+            </div>
+            <!-- Misc Features -->
+            <div id="miscSection" class="feature-section">
+              <fieldset>
+                <legend>Misc Features</legend>
+                <label><input type="checkbox" id="bFPSLimiter" /> FPS Limiter</label><br />
+                <label for="iFPSLimiterAmount">FPS Limiter Amount:</label>
+                <input type="number" id="iFPSLimiterAmount" value="144" min="1" /><br />
+                <label><input type="checkbox" id="exfilPoints" /> Exfil Points</label><br />
+                <label><input type="checkbox" id="thermalVision" /> Thermal Vision</label>
+              </fieldset>
+            </div>
+          </form>
+        </section>
+        <!-- ./ Control Panel -->
+      </div>
+    </main>
+    <!-- ./ Main -->
+
+    <!-- Footer -->
+    <footer>
+      <small
+        >Built with <a href="https://picocss.com">Pico</a> •
+        <a href="https://github.com/picocss/examples/blob/master/v2-html-classless/index.html"
+          >Source code</a
+        ></small
+      >
+    </footer>
+    <!-- ./ Footer -->
+
+  </body>
+  <script src="script.js"></script>
+  <script>
+    // Initialize jscolor with hideValue option
+    jscolor.presets.default = {
+      hideValue: true
+    };
+    jscolor.install();
+  </script>
+</html>
